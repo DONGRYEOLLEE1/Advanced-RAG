@@ -1,8 +1,30 @@
 # Advanced-RAG
 
+## Self-RAG: Learning to Retrieve, Generate and Critique through Self-reflection (2023)
 
-## Corrective-RAG
+![selfrag](assets/selfrag.png)
 
+- [Self-RAG: Learning to Retrieve, Generate and Critique through Self-reflection](https://arxiv.org/abs/2310.11511)
+
+### Usage
+
+```python
+python Self-RAG/main.py --query "프랑키의 세계관 최종 목표는 뭔가요?"
+```
+
+```text
+
+```
+
+## CRAG : Corrective Retrieval Augmented Generation (2024)
+
+![crag](assets/crag.png)
+
+
+- [Corrective Retrieval Augmented Generation](https://arxiv.org/abs/2401.15884)
+
+
+### Usage
 ```python
 python Corrective-RAG/main.py --query "프랑키의 세계관 최종 목표는 뭘까요?"
 ```
