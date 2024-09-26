@@ -22,6 +22,9 @@ class PromptHelper(abc.ABC):
         },
         "generation_system": {
             "1.0": Template("You are an assistant for question-answering tasks. Use the following pieces of retrieved context to answer the question. If you don't know the answer, just say that you don't know. Use three sentences maximum and keep the answer concise.\nQuestion:{question}\nContext:{context}\nAnswer:")
+        },
+        "raptor_summarization": {
+            "1.0": Template("다음은 만화 원피스의 등장인물 중 하나인 '프랑키'에 대한 문서의 하위 집합입니다.\n\n아래에 주어진 문서를 자세하게 요약해주세요.\n\nDocumentation:\n{documentation}")
         }
     }
     

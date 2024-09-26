@@ -7,21 +7,32 @@ from langchain_openai import ChatOpenAI
 def return_chain(
     prompt: ChatPromptTemplate,
     llm: ChatOpenAI,
-    parser: Optional[Any] = None
+    **kwargs
 ) -> RunnableSequence:
-    """
-    Return a RunnableSequence that first runs the prompt, then the llm, and finally the parser.
     
+    """
+    This function takes a ChatPromptTemplate and a ChatOpenAI and returns
+    a RunnableSequence. The RunnableSequence is created by chaining the
+    prompt and the llm together.
+
     Args:
-        prompt (ChatPromptTemplate): The prompt to run first
-        llm (ChatOpenAI): The llm to run second
-        parser (Optional[Any]): The parser to run third. If None, the parser is skipped.
-    
+        prompt (ChatPromptTemplate): The ChatPromptTemplate to pass to the
+            llm.
+        llm (ChatOpenAI): The llm to use to generate text.
+        **kwargs: Additional keyword arguments to pass to the RunnableSequence.
+            These can include a 'retrieval_dict' to use for retrieval, and/or
+            a 'parser' to use to parse the output of the llm.
+
     Returns:
-        RunnableSequence: A RunnableSequence that runs the prompt, llm, and parser in order.
+        RunnableSequence: The RunnableSequence created by chaining the prompt
+            and llm together.
     """
     
-    if parser == None:
-        return (prompt | llm)
-    else:
-        return (prompt | llm | parser)
+    chain = prompt | llm
+    
+    if 'retrieval_dict' in kwargs:
+        chain = kwargs['retrieval_dict'] | chain
+    if 'parser' in kwargs:
+        chain = chain | kwargs['parser']
+        
+    return chain
