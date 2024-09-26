@@ -19,7 +19,7 @@ from langchain_core.output_parsers import StrOutputParser
 from langchain_community.tools.tavily_search import TavilySearchResults
 
 from util.chain import return_chain
-from util.grader import GradeDocuments
+from util.structurer import GradeDocuments
 from util.prompt import PromptHelper
 
 
